@@ -6,8 +6,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import br.com.alura.control.financeiro.core.validations.OnCreate;
-import br.com.alura.control.financeiro.core.validations.OnUpdate;
+import br.com.alura.control.financeiro.validations.OnCreate;
+import br.com.alura.control.financeiro.validations.OnUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,7 +27,7 @@ public class RevenueRequest {
     @NotBlank(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
     @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
     @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
-    private BigDecimal valor;
+    private BigDecimal value;
 
     @NotBlank(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
     @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
