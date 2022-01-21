@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch FinanceiroApplication",
+            "request": "launch",
+            "mainClass": "br.com.alura.control.financeiro.FinanceiroApplication",
+            "projectName": "financeiro",
+            "vmArgs": [
+                "-Dspring.profiles.active=DEV"
+            ]
+        }
+    ]
+}

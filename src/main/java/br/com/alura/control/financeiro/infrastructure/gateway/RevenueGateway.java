@@ -1,9 +1,12 @@
 package br.com.alura.control.financeiro.infrastructure.gateway;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import br.com.alura.control.financeiro.core.entities.Revenue;
 import br.com.alura.control.financeiro.core.usecase.revenue.RevenueDelete;
@@ -13,10 +16,13 @@ import br.com.alura.control.financeiro.core.usecase.revenue.RevenueSave;
 import br.com.alura.control.financeiro.core.usecase.revenue.RevenueUpdate;
 import br.com.alura.control.financeiro.infrastructure.repository.RevenueRepository;
 import br.com.alura.control.financeiro.validations.Message;
+import br.com.alura.control.financeiro.validations.OnCreate;
+import br.com.alura.control.financeiro.validations.OnUpdate;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
+@Validated
 @Service
 @Slf4j
 public class RevenueGateway implements RevenueFindAll, RevenueFindById, RevenueSave, RevenueDelete, RevenueUpdate {
@@ -38,7 +44,8 @@ public class RevenueGateway implements RevenueFindAll, RevenueFindById, RevenueS
     }
 
     @Override
-    public Revenue revenueSave(Revenue revenue) {
+    @Validated(OnCreate.class)
+    public Revenue revenueSave(@Valid Revenue revenue) {
 
         log.info("revenue = {}", revenue);
 
@@ -66,8 +73,9 @@ public class RevenueGateway implements RevenueFindAll, RevenueFindById, RevenueS
     }
 
     @Override
+    @Validated(OnUpdate.class)
     @Transactional
-    public Revenue update(Long id, Revenue revenue) {
+    public Revenue update(Long id, @Valid Revenue revenue) {
 
         log.info("id={} revenue={}", id, revenue);
 

@@ -38,7 +38,7 @@ public class ExpenseController {
     private ExpenseUpdateUseCase expenseUpdateUseCase;
 
     @GetMapping
-    public ResponseEntity<Page<ExpenseResponse>> findByAll(
+    public ResponseEntity<Page<ExpenseResponse>> findAll(
             @RequestParam(name = "page", required = false, defaultValue = "0") int page,
             @RequestParam(name = "limit", required = false, defaultValue = "10") int limit) {
         return ResponseEntity.ok().body(expenseFindAllUseCase.findAll(limit, page));
