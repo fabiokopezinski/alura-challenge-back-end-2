@@ -1,5 +1,7 @@
 package br.com.alura.control.financeiro.core.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
@@ -13,9 +15,9 @@ public interface ExpenseModelMapper {
 
     ExpenseModelMapper INSTANCE = Mappers.getMapper(ExpenseModelMapper.class);
 
-    Page<ExpenseResponse> allEntityToallResponse(Page<Expense> page);
-
     ExpenseResponse entityToResponse(Expense expense);
+
+    List<ExpenseResponse> allEntityToallResponse(Page<Expense> page);
 
     Expense requestToEntity(ExpenseRequest request);
 }

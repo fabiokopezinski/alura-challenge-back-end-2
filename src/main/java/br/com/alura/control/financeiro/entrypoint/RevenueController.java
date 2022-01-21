@@ -1,5 +1,7 @@
 package br.com.alura.control.financeiro.entrypoint;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class RevenueController {
     private RevenueUpdateUseCase revenueUpdateUseCase;
 
     @GetMapping
-    public ResponseEntity<Page<RevenueResponse>> findAll(
+    public ResponseEntity<List<RevenueResponse>> findAll(
             @RequestParam(name = "page", required = false, defaultValue = "0") int page,
             @RequestParam(name = "limit", required = false, defaultValue = "10") int limit) {
         return ResponseEntity.ok(revenueFindAllUseCase.findAll(limit, page));

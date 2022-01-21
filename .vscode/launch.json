@@ -1,10 +1,11 @@
 {
-    "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
             "name": "Launch FinanceiroApplication",
             "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
             "mainClass": "br.com.alura.control.financeiro.FinanceiroApplication",
             "projectName": "financeiro",
             "vmArgs": [

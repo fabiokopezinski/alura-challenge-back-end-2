@@ -1,6 +1,7 @@
 package br.com.alura.control.financeiro.core.usecase.expense;
 
-import org.springframework.data.domain.Page;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.alura.control.financeiro.core.mapper.ExpenseModelMapper;
@@ -15,7 +16,7 @@ public class ExpenseFindAllUseCase {
     
     private ExpenseFindAll expenseFindAll;
 
-    public Page<ExpenseResponse> findAll(int limit,int offset){
+    public List<ExpenseResponse> findAll(int limit,int offset){
 
         log.info("findAll");
 

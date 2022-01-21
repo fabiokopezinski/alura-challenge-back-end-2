@@ -2,6 +2,10 @@ server:
     port: 8088
 
 spring:
+    application:
+        name: api-rest-controle-financia
+    profiles:
+        active: PROD
     sql:
         init:
             mode: always

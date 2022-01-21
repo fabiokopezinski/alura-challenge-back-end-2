@@ -1,6 +1,7 @@
 package br.com.alura.control.financeiro.core.usecase.revenue;
 
-import org.springframework.data.domain.Page;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.alura.control.financeiro.core.mapper.RevenueModelMapper;
@@ -15,7 +16,7 @@ public class RevenueFindAllUseCase {
 
     private RevenueFindAll revenueFindAll;
 
-    public Page<RevenueResponse> findAll(int limit, int offset) {
+    public List<RevenueResponse> findAll(int limit, int offset) {
 
         log.info("findAll");
 

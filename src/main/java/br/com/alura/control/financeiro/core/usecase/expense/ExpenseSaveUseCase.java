@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @AllArgsConstructor
+@Validated
 @Slf4j
 public class ExpenseSaveUseCase {
 

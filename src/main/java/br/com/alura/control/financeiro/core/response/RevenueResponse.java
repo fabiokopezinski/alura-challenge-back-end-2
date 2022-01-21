@@ -6,9 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 @Builder
 @Getter
 public class RevenueResponse {
@@ -16,7 +18,7 @@ public class RevenueResponse {
 
     private String description;
 
-    private BigDecimal valor;
+    private BigDecimal value;
 
     private String data;
 }

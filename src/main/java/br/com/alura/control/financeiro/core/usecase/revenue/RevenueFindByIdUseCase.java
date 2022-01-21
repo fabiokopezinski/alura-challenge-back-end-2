@@ -2,6 +2,7 @@ package br.com.alura.control.financeiro.core.usecase.revenue;
 
 import org.springframework.stereotype.Service;
 
+import br.com.alura.control.financeiro.core.entities.Revenue;
 import br.com.alura.control.financeiro.core.mapper.RevenueModelMapper;
 import br.com.alura.control.financeiro.core.response.RevenueResponse;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,9 @@ public class RevenueFindByIdUseCase {
 
         log.info("findById");
 
-        return RevenueModelMapper.INSTANCE.entityToResponse(revenueFindById.findById(id));
+        Revenue revenue = revenueFindById.findById(id);
+
+        return RevenueModelMapper.INSTANCE.entityToResponse(revenue);
     }
     
 }

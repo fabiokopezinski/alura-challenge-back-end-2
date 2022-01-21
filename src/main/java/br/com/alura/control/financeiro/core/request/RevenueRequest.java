@@ -24,8 +24,6 @@ public class RevenueRequest {
     @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O description está inválido")
     private String description;
 
-    @NotBlank(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
-    @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
     @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
     private BigDecimal value;
 
