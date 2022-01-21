@@ -6,8 +6,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import br.com.alura.control.financeiro.core.validations.OnCreate;
-import br.com.alura.control.financeiro.core.validations.OnUpdate;
+import br.com.alura.control.financeiro.validations.OnCreate;
+import br.com.alura.control.financeiro.validations.OnUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

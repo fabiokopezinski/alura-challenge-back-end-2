@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
+import br.com.alura.control.financeiro.core.request.ExpenseRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -38,4 +38,11 @@ public class Expense {
 
     @Column(name = "data", nullable = false, columnDefinition = "CHARACTER VARYING")
     private String data;
+
+    public void update(ExpenseRequest expenseRequest){
+        
+        this.description=expenseRequest.getDescription();
+        this.valor=expenseRequest.getValor();
+        this.data=expenseRequest.getData();
+    }
 }
