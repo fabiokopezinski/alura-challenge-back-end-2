@@ -7,6 +7,8 @@ import br.com.alura.control.financeiro.exceptions.BusinessException;
 public enum Message {
     
     IS_PRESENT_EXPENSE("Despesa já cadastrada",HttpStatus.BAD_REQUEST),
+    IS_PRESENT_REVENUE("Receita já cadastrada",HttpStatus.BAD_REQUEST),
+    NOT_FOUND_REVENUE("Receita não encontrado",HttpStatus.NOT_FOUND),
     NOT_FOUND_EXPENSE("Despesa não encontrado", HttpStatus.NOT_FOUND);
 
     private String value;

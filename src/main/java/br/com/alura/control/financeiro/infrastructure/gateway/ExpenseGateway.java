@@ -42,7 +42,7 @@ public class ExpenseGateway implements ExpenseFindAll, ExpenseFindById, ExpenseS
         
         log.info("expense={}", expense);
 
-        this.expenseRepository.findByDescriptionAndValorAndData(expense.getDescription(), expense.getValor(), expense.getData()).ifPresent(p->{
+        this.expenseRepository.findByDescriptionAndValueAndData(expense.getDescription(), expense.getValue(), expense.getData()).ifPresent(p->{
             throw Message.IS_PRESENT_EXPENSE.asBusinessException();
         });
 

@@ -27,7 +27,7 @@ public class RevenueRequest {
     @NotBlank(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
     @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
     @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
-    private BigDecimal valor;
+    private BigDecimal value;
 
     @NotBlank(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
     @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")

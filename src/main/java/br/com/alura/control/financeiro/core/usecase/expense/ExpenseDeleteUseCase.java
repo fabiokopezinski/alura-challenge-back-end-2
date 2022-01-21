@@ -16,6 +16,6 @@ public class ExpenseDeleteUseCase {
 
         log.info("expenseDelete");
 
-        expenseDelete.delete(id);
+        this.expenseDelete.delete(id);
     }
 }

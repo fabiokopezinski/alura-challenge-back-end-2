@@ -25,24 +25,24 @@ import lombok.NoArgsConstructor;
 public class Expense {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_despesas_id_seq")
-	@SequenceGenerator(name = "tb_despesas_id_seq", allocationSize = 1)
-	@Column(name = "id", nullable = false)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_despesas_id_seq")
+    @SequenceGenerator(name = "tb_despesas_id_seq", allocationSize = 1)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @Column(name = "descricao", nullable = false, columnDefinition = "CHARACTER VARYING(255)")
     private String description;
 
-    @Column(name = "valor", nullable = false, columnDefinition = "NUMERIC(12,3)",precision = 12,scale = 3)
-    private BigDecimal valor;
+    @Column(name = "valor", nullable = false, columnDefinition = "NUMERIC(12,3)", precision = 12, scale = 3)
+    private BigDecimal value;
 
     @Column(name = "data", nullable = false, columnDefinition = "CHARACTER VARYING")
     private String data;
 
-    public void update(ExpenseRequest expenseRequest){
-        
-        this.description=expenseRequest.getDescription();
-        this.valor=expenseRequest.getValor();
-        this.data=expenseRequest.getData();
+    public void update(ExpenseRequest expenseRequest) {
+
+        this.description = expenseRequest.getDescription();
+        this.value = expenseRequest.getValue();
+        this.data = expenseRequest.getData();
     }
 }

@@ -17,5 +17,5 @@ public interface ExpenseRepository extends JpaRepository<Expense,Long> {
 
     Optional<Expense> findById(Long id);
 
-    Optional<Expense> findByDescriptionAndValorAndData(String description,BigDecimal valor,String data);
+    Optional<Expense> findByDescriptionAndValueAndData(String description,BigDecimal value,String data);
 }
