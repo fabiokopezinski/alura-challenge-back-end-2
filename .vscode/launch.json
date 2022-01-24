@@ -2,13 +2,15 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-FinanceiroApplication<financeiro>",
+            "name": "Launch FinanceiroApplication",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "mainClass": "br.com.alura.control.financeiro.FinanceiroApplication",
             "projectName": "financeiro",
-            "args": ""
+            "vmArgs": [
+                "-Dspring.profiles.active=DEV"
+            ]
         }
     ]
 }
