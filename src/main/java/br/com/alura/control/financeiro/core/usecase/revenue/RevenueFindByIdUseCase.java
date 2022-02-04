@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RevenueFindByIdUseCase {
 
-    private RevenueFindById revenueFindById;
+    private IRevenue revenueFindById;
 
     public RevenueResponse findById(Long id){
 

@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExpenseFindByIdUseCase {
     
-    private ExpenseFindById expenseFindById;
+    private IExpense expenseFindById;
 
     public ExpenseResponse findById(Long id){
         

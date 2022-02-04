@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExpenseSaveUseCase {
 
-    private ExpenseSave expenseSave;
+    private IExpense expenseSave;
 
     @Validated(OnCreate.class)
     public ExpenseResponse expenseSave(@Valid ExpenseRequest request) {

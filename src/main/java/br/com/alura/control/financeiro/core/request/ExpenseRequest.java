@@ -33,4 +33,9 @@ public class ExpenseRequest {
     @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
     @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
     private String data;
+
+    @NotBlank(groups = { OnCreate.class, OnUpdate.class }, message = "O category está inválido")
+    @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O category está inválido")
+    @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O category está inválido")
+    private String category;
 }

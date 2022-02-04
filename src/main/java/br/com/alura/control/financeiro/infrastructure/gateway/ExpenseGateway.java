@@ -6,11 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import br.com.alura.control.financeiro.core.entities.Expense;
-import br.com.alura.control.financeiro.core.usecase.expense.ExpenseDelete;
-import br.com.alura.control.financeiro.core.usecase.expense.ExpenseFindAll;
-import br.com.alura.control.financeiro.core.usecase.expense.ExpenseFindById;
-import br.com.alura.control.financeiro.core.usecase.expense.ExpenseSave;
-import br.com.alura.control.financeiro.core.usecase.expense.ExpenseUpdate;
+import br.com.alura.control.financeiro.core.usecase.expense.IExpense;
 import br.com.alura.control.financeiro.infrastructure.repository.ExpenseRepository;
 import br.com.alura.control.financeiro.validations.Message;
 import lombok.AllArgsConstructor;
@@ -20,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Validated
 @Slf4j
-public class ExpenseGateway implements ExpenseFindAll, ExpenseFindById, ExpenseSave , ExpenseUpdate, ExpenseDelete {
+public class ExpenseGateway implements IExpense {
 
     private ExpenseRepository expenseRepository;
 

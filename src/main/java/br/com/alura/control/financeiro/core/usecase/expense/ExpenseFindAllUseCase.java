@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExpenseFindAllUseCase {
     
-    private ExpenseFindAll expenseFindAll;
+    private IExpense expenseFindAll;
 
     public List<ExpenseResponse> findAll(int limit,int offset){
 

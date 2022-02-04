@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RevenueFindAllUseCase {
 
-    private RevenueFindAll revenueFindAll;
+    private IRevenue revenueFindAll;
 
     public List<RevenueResponse> findAll(int limit, int offset) {
 

@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,10 +45,16 @@ public class Expense {
     @Column(name = "data", nullable = false, columnDefinition = "CHARACTER VARYING")
     private String data;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "categoria", nullable = false, columnDefinition = "CHARACTER VARYING")
+    private String category;
+
+
     public void update(ExpenseRequest expenseRequest) {
 
         this.description = expenseRequest.getDescription();
         this.value = expenseRequest.getValue();
         this.data = expenseRequest.getData();
+        this.category=expenseRequest.getCategory();
     }
 }

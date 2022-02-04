@@ -20,9 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RevenueUpdateUseCase {
     
-    private RevenueUpdate revenueUpdate;
-
-    private RevenueFindById revenueFindById;
+    private IRevenue revenueGateway;
 
     @Validated(OnUpdate.class)
     @Transactional
@@ -30,10 +28,10 @@ public class RevenueUpdateUseCase {
 
         log.info("revenueUpdate");
 
-        Revenue revenue = revenueFindById.findById(id);
+        Revenue revenue = revenueGateway.findById(id);
 
         revenue.update(revenueRequest);
 
-        return RevenueModelMapper.INSTANCE.entityToResponse(revenueUpdate.update(id, revenue));
+        return RevenueModelMapper.INSTANCE.entityToResponse(revenueGateway.update(id, revenue));
     }
 }

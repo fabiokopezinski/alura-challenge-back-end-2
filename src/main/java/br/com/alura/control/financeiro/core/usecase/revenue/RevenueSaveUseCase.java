@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RevenueSaveUseCase {
 
-    private RevenueSave revenueSave;
+    private IRevenue revenueSave;
 
     @Validated(OnCreate.class)
     public RevenueResponse save(@Valid RevenueRequest revenueRequest) {

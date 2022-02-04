@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RevenueDeleteUseCase {
     
-    private RevenueDelete revenueDelete;
+    private IRevenue revenueDelete;
 
     public void revenueDelete(Long id){
 

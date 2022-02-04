@@ -20,9 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExpenseUpdateUseCase {
     
-    private ExpenseUpdate expenseUpdate;
-
-    private ExpenseFindById expenseFindById;
+    private IExpense expenseGatewayExpense;
 
     @Validated(OnUpdate.class)
     @Transactional
@@ -30,10 +28,10 @@ public class ExpenseUpdateUseCase {
 
         log.info("expenseUpdate");
 
-        Expense expense = expenseFindById.findById(id);
+        Expense expense = expenseGatewayExpense.findById(id);
         
         expense.update(expenseRequest);
 
-        return ExpenseModelMapper.INSTANCE.entityToResponse(expenseUpdate.update(id, expense));
+        return ExpenseModelMapper.INSTANCE.entityToResponse(expenseGatewayExpense.update(id, expense));
     }
 }

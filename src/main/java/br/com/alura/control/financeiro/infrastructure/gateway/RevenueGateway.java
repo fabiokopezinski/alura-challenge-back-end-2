@@ -5,11 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.alura.control.financeiro.core.entities.Revenue;
-import br.com.alura.control.financeiro.core.usecase.revenue.RevenueDelete;
-import br.com.alura.control.financeiro.core.usecase.revenue.RevenueFindAll;
-import br.com.alura.control.financeiro.core.usecase.revenue.RevenueFindById;
-import br.com.alura.control.financeiro.core.usecase.revenue.RevenueSave;
-import br.com.alura.control.financeiro.core.usecase.revenue.RevenueUpdate;
+import br.com.alura.control.financeiro.core.usecase.revenue.IRevenue;
 import br.com.alura.control.financeiro.infrastructure.repository.RevenueRepository;
 import br.com.alura.control.financeiro.validations.Message;
 import lombok.AllArgsConstructor;
@@ -18,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Service
 @Slf4j
-public class RevenueGateway implements RevenueFindAll, RevenueFindById, RevenueSave, RevenueDelete, RevenueUpdate {
+public class RevenueGateway implements IRevenue {
 
     private RevenueRepository revenueRepository;
 
