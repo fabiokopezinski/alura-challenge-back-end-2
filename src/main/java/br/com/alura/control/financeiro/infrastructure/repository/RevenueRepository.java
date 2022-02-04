@@ -1,6 +1,7 @@
 package br.com.alura.control.financeiro.infrastructure.repository;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -17,6 +18,6 @@ public interface RevenueRepository extends JpaRepository<Revenue,Long> {
 
     Optional<Revenue> findById(Long id);
 
-    Optional<Revenue> findByDescriptionAndValueAndData(String description,BigDecimal value,String data);
+    Optional<Revenue> findByDescriptionAndValueAndData(String description,BigDecimal value,LocalDate data);
 
 }

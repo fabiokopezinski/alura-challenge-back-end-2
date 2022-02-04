@@ -1,6 +1,7 @@
 package br.com.alura.control.financeiro.feature;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import br.com.alura.control.financeiro.core.entities.Expense;
 import br.com.alura.control.financeiro.core.request.ExpenseRequest;
 import br.com.alura.control.financeiro.core.response.ExpenseResponse;
 
-public class ExpenseScenarioFactoryoFactory {
+public class ExpenseScenarioFactory {
     
     public static final Expense EXPENSE_ONE=loadExpanse();
 
@@ -28,12 +29,12 @@ public class ExpenseScenarioFactoryoFactory {
 
     private static Expense loadExpanse() {
         return Expense.builder().id(1L).description("ReceitaUm")
-        .value(BigDecimal.ONE).data("13/06/2022").build();
+        .value(BigDecimal.ONE).data(LocalDate.now()).build();
     }
 
     private static ExpenseResponse loadExpenseResponseTwo() {
-        return ExpenseResponse.builder().id(1L).description("ReceitaTres")
-        .value(BigDecimal.ONE).data("16/06/2022").build();
+        return ExpenseResponse.builder().description("ReceitaTres")
+        .value(BigDecimal.ONE).data(LocalDate.now()).build();
     }
 
     private static Page<Expense> loadFindAll() {
@@ -51,16 +52,16 @@ public class ExpenseScenarioFactoryoFactory {
 
     private static ExpenseRequest loadExpenseRequest() {
         return ExpenseRequest.builder().description("ReceitaTres")
-        .value(BigDecimal.ONE).data("16/06/2022").build();
+        .value(BigDecimal.ONE).data(LocalDate.now()).build();
     }
 
     private static ExpenseResponse loadExpenseResponse() {
-        return ExpenseResponse.builder().id(1L).description("ReceitaDois")
-        .value(BigDecimal.ONE).data("16/06/2022").build();
+        return ExpenseResponse.builder().description("ReceitaDois")
+        .value(BigDecimal.ONE).data(LocalDate.now()).build();
     }
 
     private static Expense loadExpanseTwo() {
         return Expense.builder().id(1L).description("ReceitaDois")
-        .value(BigDecimal.ONE).data("16/06/2022").build();
+        .value(BigDecimal.ONE).data(LocalDate.now()).build();
     }
 }

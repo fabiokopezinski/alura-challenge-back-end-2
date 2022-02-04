@@ -14,7 +14,6 @@ import lombok.Setter;
 @Builder
 @Getter
 public class RevenueResponse {
-    private Long id;
 
     private String description;
 

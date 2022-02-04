@@ -5,7 +5,8 @@ create table tb_despesas(
     id SERIAL NOT NULL ,
     descricao CHARACTER VARYING(255),
     valor NUMERIC(12,3),
-    data CHARACTER VARYING,
+    data DATE,
+    categoria CHARACTER VARYING,
     PRIMARY KEY(id)
 );
 

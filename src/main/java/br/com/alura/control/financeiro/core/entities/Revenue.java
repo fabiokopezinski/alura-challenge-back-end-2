@@ -1,6 +1,7 @@
 package br.com.alura.control.financeiro.core.entities;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import br.com.alura.control.financeiro.core.request.RevenueRequest;
 import lombok.AllArgsConstructor;
@@ -41,7 +48,10 @@ public class Revenue {
     private BigDecimal value;
 
     @Column(name = "data", nullable = false, columnDefinition = "CHARACTER VARYING")
-    private String data;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using=LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+    private LocalDate data;
 
     public void update(RevenueRequest revenue) {
 
