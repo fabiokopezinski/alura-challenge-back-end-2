@@ -34,11 +34,10 @@ public class RevenueRequest {
     @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O valor está inválido")
     private BigDecimal value;
 
-    @NotBlank(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
-    @NotEmpty(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
     @NotNull(groups = { OnCreate.class, OnUpdate.class }, message = "O data está inválido")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using=LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
     private LocalDate data;
+
 }
