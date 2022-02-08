@@ -1,4 +1,4 @@
-# alura-challenge-back-end-2
+# API controle de finanças
 API Rest para controle de finanças
 
 # Arquitetura
