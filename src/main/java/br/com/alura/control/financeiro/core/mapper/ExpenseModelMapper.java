@@ -19,5 +19,7 @@ public interface ExpenseModelMapper {
 
     List<ExpenseResponse> allEntityToallResponse(Page<Expense> page);
 
+    List<ExpenseResponse> listEntityToListResponse(List<Expense> list);
+
     Expense requestToEntity(ExpenseRequest request);
 }

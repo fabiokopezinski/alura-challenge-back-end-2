@@ -18,6 +18,8 @@ import br.com.alura.control.financeiro.core.request.RevenueRequest;
 import br.com.alura.control.financeiro.core.response.RevenueResponse;
 import br.com.alura.control.financeiro.core.usecase.revenue.RevenueDeleteUseCase;
 import br.com.alura.control.financeiro.core.usecase.revenue.RevenueFindAllUseCase;
+import br.com.alura.control.financeiro.core.usecase.revenue.RevenueFindByDataUseCase;
+import br.com.alura.control.financeiro.core.usecase.revenue.RevenueFindByDescriptionUseCase;
 import br.com.alura.control.financeiro.core.usecase.revenue.RevenueFindByIdUseCase;
 import br.com.alura.control.financeiro.core.usecase.revenue.RevenueSaveUseCase;
 import br.com.alura.control.financeiro.core.usecase.revenue.RevenueUpdateUseCase;
@@ -38,11 +40,23 @@ public class RevenueController {
 
     private RevenueUpdateUseCase revenueUpdateUseCase;
 
+    private RevenueFindByDescriptionUseCase revenueFindByDescriptionUseCase;
+
+    private RevenueFindByDataUseCase revenueFindByDataUseCase;
+
+    @GetMapping("/{year}/{month}")
+    public ResponseEntity<List<RevenueResponse>> findByData(@PathVariable("year") String year,
+            @PathVariable("month") String month) {
+        return ResponseEntity.ok(revenueFindByDataUseCase.findByData(month, year));
+    }
+
     @GetMapping
     public ResponseEntity<List<RevenueResponse>> findAll(
             @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-            @RequestParam(name = "limit", required = false, defaultValue = "10") int limit) {
-        return ResponseEntity.ok(revenueFindAllUseCase.findAll(limit, page));
+            @RequestParam(name = "limit", required = false, defaultValue = "10") int limit,
+            @RequestParam(name = "descricao", required = false) String descricao) {
+        return descricao == null ? ResponseEntity.ok(revenueFindAllUseCase.findAll(limit, page))
+                : ResponseEntity.ok(revenueFindByDescriptionUseCase.findByDescrRevenue(descricao));
     }
 
     @GetMapping("/{id}")

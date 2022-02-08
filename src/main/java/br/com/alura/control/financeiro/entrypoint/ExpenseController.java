@@ -18,6 +18,8 @@ import br.com.alura.control.financeiro.core.request.ExpenseRequest;
 import br.com.alura.control.financeiro.core.response.ExpenseResponse;
 import br.com.alura.control.financeiro.core.usecase.expense.ExpenseDeleteUseCase;
 import br.com.alura.control.financeiro.core.usecase.expense.ExpenseFindAllUseCase;
+import br.com.alura.control.financeiro.core.usecase.expense.ExpenseFindByDataUseCase;
+import br.com.alura.control.financeiro.core.usecase.expense.ExpenseFindByDescriptionUseCase;
 import br.com.alura.control.financeiro.core.usecase.expense.ExpenseFindByIdUseCase;
 import br.com.alura.control.financeiro.core.usecase.expense.ExpenseSaveUseCase;
 import br.com.alura.control.financeiro.core.usecase.expense.ExpenseUpdateUseCase;
@@ -38,11 +40,22 @@ public class ExpenseController {
 
     private ExpenseUpdateUseCase expenseUpdateUseCase;
 
+    private ExpenseFindByDescriptionUseCase expenseFindByDescriptionUseCase;
+
+    private ExpenseFindByDataUseCase findByDataUseCase;
+
+    @GetMapping("/{year}/{month}")
+    public ResponseEntity<List<ExpenseResponse>> findByData(@PathVariable("year") String year,@PathVariable("month") String month){
+        return ResponseEntity.ok(findByDataUseCase.findByDate(month, year));
+    }
+
     @GetMapping
     public ResponseEntity<List<ExpenseResponse>> findAll(
             @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-            @RequestParam(name = "limit", required = false, defaultValue = "10") int limit) {
-        return ResponseEntity.ok().body(expenseFindAllUseCase.findAll(limit, page));
+            @RequestParam(name = "limit", required = false, defaultValue = "10") int limit,
+            @RequestParam(name = "descricao", required = false) String descricao) {
+        return  descricao == null ? ResponseEntity.ok().body(expenseFindAllUseCase.findAll(limit, page))
+                : ResponseEntity.ok().body(expenseFindByDescriptionUseCase.findByDescrExpense(descricao));
     }
 
     @GetMapping("/{id}")

@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,8 +28,10 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import br.com.alura.control.financeiro.exceptions.BusinessException;
 import br.com.alura.control.financeiro.exceptions.ExceptionResolver;
+import lombok.extern.slf4j.Slf4j;
 
 @ControllerAdvice
+@Slf4j
 public class ControlExceptionHandler {
 
     public static final String CONSTRAINT_VALIDATION_FAILED = "Constraint validation failed";
@@ -139,6 +144,60 @@ public class ControlExceptionHandler {
         return ResponseEntity.status(ex.getHttpStatusCode()).headers(responseHeaders).body(ex.getOnlyBody());
 
     }
+
+    @ExceptionHandler({ DataAccessResourceFailureException.class })
+    public ResponseEntity<Object> handleException(DataAccessResourceFailureException e) {
+
+        BusinessException ex = BusinessException.builder().httpStatusCode(HttpStatus.INTERNAL_SERVER_ERROR)
+                .message(Optional.ofNullable(e.getMessage()).orElse(e.toString()))
+                .description(ExceptionResolver.getRootException(e)).build();
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        log.error("Erro ao conectar no banco:  "+e.getMessage());
+
+        return ResponseEntity.status(ex.getHttpStatusCode()).headers(responseHeaders).body(ex.getOnlyBody());
+    }
+
+
+
+    @ExceptionHandler({ Exception.class })
+    public ResponseEntity<Object> handleException(Exception e) {
+
+        BusinessException ex = BusinessException.builder().httpStatusCode(HttpStatus.SERVICE_UNAVAILABLE)
+                .message(Optional.ofNullable(e.getMessage()).orElse(e.toString()))
+                .description(ExceptionResolver.getRootException(e)).build();
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        log.error("Erro : "+e.getMessage());
+
+        return ResponseEntity.status(ex.getHttpStatusCode()).headers(responseHeaders).body(ex.getOnlyBody());
+    }
+
+    @ExceptionHandler({ DataIntegrityViolationException.class })
+    public ResponseEntity<Object> handleException(DataIntegrityViolationException e) {
+
+        BusinessException ex = BusinessException.builder().httpStatusCode(HttpStatus.BAD_GATEWAY)
+                .message(Optional.ofNullable(e.getMessage()).orElse(e.toString()))
+                .description(ExceptionResolver.getRootException(e)).build();
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        log.error("Erro ao conectar no banco: "+e.getMessage());
+
+        return ResponseEntity.status(ex.getHttpStatusCode()).headers(responseHeaders).body(ex.getOnlyBody());
+    }
+   
+    @ExceptionHandler({ EmptyResultDataAccessException.class })
+	public ResponseEntity<Object> handleException(EmptyResultDataAccessException e) {
+
+		BusinessException ex = BusinessException.builder()
+				.httpStatusCode(HttpStatus.BAD_GATEWAY)
+				.message(e.getMessage())
+				.description(ExceptionResolver.getRootException(e))
+				.build();
+		HttpHeaders responseHeaders = new HttpHeaders();
+
+		return ResponseEntity.status(ex.getHttpStatusCode()).headers(responseHeaders).body(ex.getOnlyBody());
+	}
 
     @ExceptionHandler({ NotFoundException.class })
     public ResponseEntity<Object> handleException(NotFoundException e) {

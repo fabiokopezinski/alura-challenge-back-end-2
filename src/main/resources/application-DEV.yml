@@ -4,13 +4,15 @@ server:
 spring:
     application:
         name: api-rest-controle-financia
+    profiles:
+        active: DEV
     sql:
         init:
             mode: always
     jpa:
         hibernate:
             ddl-auto: none
-        show_sql: true
+        show_sql: false
         defer-datasource-initialization: true
         database: postgresql
     datasource:

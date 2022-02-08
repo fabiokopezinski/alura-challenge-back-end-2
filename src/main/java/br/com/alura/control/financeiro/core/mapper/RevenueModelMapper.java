@@ -19,5 +19,7 @@ public interface RevenueModelMapper {
 
     List<RevenueResponse> allEntityToAllResponse(Page<Revenue> page);
 
+    List<RevenueResponse> listEntityToListResponse(List<Revenue>list);
+
     RevenueResponse entityToResponse(Revenue response);
 }
