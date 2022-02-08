@@ -1,6 +1,7 @@
 package br.com.alura.control.financeiro.core.response;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,9 +16,11 @@ import lombok.Setter;
 @Getter
 public class RevenueResponse {
 
+    private Long id;
+
     private String description;
 
     private BigDecimal value;
 
-    private String data;
+    private LocalDate data;
 }

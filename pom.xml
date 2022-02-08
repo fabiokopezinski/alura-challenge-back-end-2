@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.2</version>
+		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.alura.control</groupId>
@@ -248,7 +248,7 @@
 											<limit>
 												<counter>CLASS</counter>
 												<value>COVEREDRATIO</value>
-												
+												<minimum>80%</minimum>
 											</limit>
 										</limits>
 									</rule>
@@ -259,11 +259,13 @@
 					<configuration>
 						<excludes>
 							<exclude>br/com/alura/control/financeiro/core/entities/*/**</exclude>
+							<exclude>br/com/alura/control/financeiro/enums/*/**</exclude>
 							<exclude>br/com/alura/control/financeiro/core/mapper/*/**</exclude>
 							<exclude>br/com/alura/control/financeiro/core/request/*/**</exclude>
 							<exclude>br/com/alura/control/financeiro/core/response/*/**</exclude>
 							<exclude>br/com/alura/control/financeiro/exceptions/*/**</exclude>
 							<exclude>br/com/alura/control/financeiro/validations/*/**</exclude>
+							<exclude>br/com/alura/control/financeiro/entrypoint/*/**</exclude>
 							<exclude>br/com/alura/control/financeiro/FinanceiroApplication.*</exclude>
 						</excludes>
 					</configuration>

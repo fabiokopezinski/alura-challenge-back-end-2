@@ -12,15 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @AllArgsConstructor
 @Slf4j
-public class ExpenseFindAllUseCase {
-    
-    private IExpense expenseFindAll;
+public class ExpenseFindByDescriptionUseCase {
 
-    public List<ExpenseResponse> findAll(int limit,int offset){
+    private IExpense expense;
 
-        log.info("findAll");
+    public List<ExpenseResponse> findByDescrExpense(String description) {
 
-        return ExpenseModelMapper.INSTANCE.allEntityToallResponse(expenseFindAll.findAllExpense(limit, offset));
+        log.info("findByDescrExpense");
+
+        return ExpenseModelMapper.INSTANCE.listEntityToListResponse(this.expense.findByDescription(description));
     }
-
 }

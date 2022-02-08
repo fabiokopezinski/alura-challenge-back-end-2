@@ -9,18 +9,17 @@ import br.com.alura.control.financeiro.core.response.ExpenseResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
 @AllArgsConstructor
+@Service
 @Slf4j
-public class ExpenseFindAllUseCase {
+public class ExpenseFindByDataUseCase {
     
-    private IExpense expenseFindAll;
+    private IExpense expense;
 
-    public List<ExpenseResponse> findAll(int limit,int offset){
+    public List<ExpenseResponse> findByDate(String month,String year){
 
-        log.info("findAll");
+        log.info("month={} year={}", month, year);
 
-        return ExpenseModelMapper.INSTANCE.allEntityToallResponse(expenseFindAll.findAllExpense(limit, offset));
+        return ExpenseModelMapper.INSTANCE.listEntityToListResponse(expense.findByData(month.concat("-")+year));
     }
-
 }

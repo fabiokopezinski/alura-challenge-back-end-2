@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import br.com.alura.control.financeiro.core.entities.Expense;
 import br.com.alura.control.financeiro.core.request.ExpenseRequest;
 import br.com.alura.control.financeiro.core.response.ExpenseResponse;
+import br.com.alura.control.financeiro.enums.CategoryEnum;
 
 public class ExpenseScenarioFactory {
     
@@ -28,13 +29,13 @@ public class ExpenseScenarioFactory {
     public static final Page<Expense> EXPENSE_FIND_ALL=loadFindAll();
 
     private static Expense loadExpanse() {
-        return Expense.builder().id(1L).description("ReceitaUm")
-        .value(BigDecimal.ONE).data(LocalDate.now()).build();
+        return Expense.builder().id(1L).description("ReceitaUm").category(CategoryEnum.Alimentacao)
+        .value(BigDecimal.ONE).data(LocalDate.parse("2021-10-02")).build();
     }
 
     private static ExpenseResponse loadExpenseResponseTwo() {
-        return ExpenseResponse.builder().description("ReceitaTres")
-        .value(BigDecimal.ONE).data(LocalDate.now()).build();
+        return ExpenseResponse.builder().id(2L).description("ReceitaTres").category(CategoryEnum.Alimentacao)
+        .value(BigDecimal.ONE).data(LocalDate.parse("2021-10-02")).build();
     }
 
     private static Page<Expense> loadFindAll() {
@@ -56,7 +57,7 @@ public class ExpenseScenarioFactory {
     }
 
     private static ExpenseResponse loadExpenseResponse() {
-        return ExpenseResponse.builder().description("ReceitaDois")
+        return ExpenseResponse.builder().id(1L).description("ReceitaDois")
         .value(BigDecimal.ONE).data(LocalDate.now()).build();
     }
 

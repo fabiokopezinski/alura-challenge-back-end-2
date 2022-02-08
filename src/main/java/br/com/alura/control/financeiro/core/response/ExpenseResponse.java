@@ -17,6 +17,8 @@ import lombok.Setter;
 @Getter
 public class ExpenseResponse {
 
+    private Long id;
+
     private String description;
 
     private BigDecimal value;

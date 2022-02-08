@@ -1,5 +1,7 @@
 package br.com.alura.control.financeiro.infrastructure.gateway;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -38,7 +40,7 @@ public class RevenueGateway implements IRevenue {
         log.info("revenue = {}", revenue.toString());
 
         this.revenueRepository
-                .findByDescriptionAndValueAndData(revenue.getDescription(), revenue.getValue(), revenue.getData())
+                .findByDescriptionAndValueAndData(revenue.getDescription(), revenue.getValue())
                 .ifPresent(p -> {
                     throw Message.IS_PRESENT_REVENUE.asBusinessException();
                 });
@@ -68,6 +70,28 @@ public class RevenueGateway implements IRevenue {
         log.info("id={} revenue={}", id, revenue);
 
         return revenue;
+    }
+
+    @Override
+    public List<Revenue> findByDescription(String description) {
+
+        log.info("description={}", description);
+
+        return this.revenueRepository.findByDescription(description);
+    }
+
+    @Override
+    public List<Revenue> findByData(String data) {
+
+        log.info("data={}", data);
+
+        return this.revenueRepository.findByData(data);
+    }
+
+    @Override
+    public List<Revenue> findAll() {
+
+        return this.revenueRepository.findAll();
     }
 
 }
