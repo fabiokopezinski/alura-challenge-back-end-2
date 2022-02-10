@@ -9,6 +9,8 @@ public enum Message {
     IS_PRESENT_EXPENSE("Despesa já cadastrada",HttpStatus.BAD_REQUEST),
     IS_PRESENT_REVENUE("Receita já cadastrada",HttpStatus.BAD_REQUEST),
     NOT_FOUND_REVENUE("Receita não encontrado",HttpStatus.NOT_FOUND),
+    TOKEN_ERROR("Erro ao validar o token", HttpStatus.UNAUTHORIZED),
+    NOT_FOT_USER_PERMISSION("Email ou senha inválida", HttpStatus.UNAUTHORIZED),
     NOT_FOUND_EXPENSE("Despesa não encontrado", HttpStatus.NOT_FOUND);
 
     private String value;
