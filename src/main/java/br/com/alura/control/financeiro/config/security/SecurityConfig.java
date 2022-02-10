@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
+        if (Arrays.asList(env.getActiveProfiles()).contains("TEST")) {
             http.httpBasic().disable().csrf().disable().sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and().csrf().disable().headers().frameOptions().disable().and()

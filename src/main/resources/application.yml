@@ -11,3 +11,15 @@ spring:
         name: api-rest-controle-financia
     profiles:
         active: PROD
+
+    jpa:
+        hibernate:
+            ddl-auto: none
+        show_sql: false
+        defer-datasource-initialization: true
+        database: postgresql
+    datasource:
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
