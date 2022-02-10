@@ -40,7 +40,7 @@ public class RevenueGateway implements IRevenue {
         log.info("revenue = {}", revenue.toString());
 
         this.revenueRepository
-                .findByDescriptionAndValueAndData(revenue.getDescription(), revenue.getValue())
+                .findByDescriptionAndValue(revenue.getDescription(), revenue.getValue())
                 .ifPresent(p -> {
                     throw Message.IS_PRESENT_REVENUE.asBusinessException();
                 });
