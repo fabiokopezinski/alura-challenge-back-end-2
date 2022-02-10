@@ -115,7 +115,7 @@ public class RevenueGatewayTest {
     @Test
     public void revenueSave_WhenRevenueNotExist_ThenSaveOk() {
 
-        when(revenueRepository.findByDescriptionAndValueAndData(anyString(), any())).thenReturn(Optional.empty());
+        when(revenueRepository.findByDescriptionAndValue(anyString(), any())).thenReturn(Optional.empty());
 
         when(revenueRepository.save(any())).thenReturn(RevenueScenarioFactory.REVENUE_ONE);
 
@@ -136,7 +136,7 @@ public class RevenueGatewayTest {
     @Test
     public void revenueSave_WhenRevenueExist_ThenReturnException() {
 
-        when(revenueRepository.findByDescriptionAndValueAndData(anyString(), any()))
+        when(revenueRepository.findByDescriptionAndValue(anyString(), any()))
                 .thenReturn(Optional.of(RevenueScenarioFactory.REVENUE_ONE));
 
         assertThrows(BusinessException.class, () -> revenueGateway.revenueSave(RevenueScenarioFactory.REVENUE_ONE));

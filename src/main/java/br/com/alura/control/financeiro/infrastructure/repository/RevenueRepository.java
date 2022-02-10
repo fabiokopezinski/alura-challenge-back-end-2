@@ -19,7 +19,7 @@ public interface RevenueRepository extends JpaRepository<Revenue,Long> {
 
     Optional<Revenue> findById(Long id);
 
-    Optional<Revenue> findByDescriptionAndValueAndData(String description,BigDecimal value);
+    Optional<Revenue> findByDescriptionAndValue(String description,BigDecimal value);
 
     List<Revenue> findByDescription(String description);
 
